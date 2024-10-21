@@ -1,67 +1,70 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import NavBar from '@/app/components/navbar'; 
 import HomeSection from '@/app/components/home-section';
 import SecondSection from '@/app/components/second-section';
 import { motion } from 'framer-motion';
 import { useNavbarColor } from '@/app/context/NavbarContext';
 import PrivacyModal from './components/modalprivacidade';
-import FacilUsoSection from '@/app/components/facil-uso'
-import PlanosSection from '@/app/components/planos-section'
-import SobreNos from '@/app/components/sobre-nos-section'
-
-import Linhas from '/public/images/linhas.svg'; // Importa o SVG como um componente React
+import PlanosSection from '@/app/components/planos-section';
+import SobreNos from '@/app/components/sobre-nos-section';
 
 export default function TransitionsPage() {
-  // Create an array of refs for your sections
-  const sectionRefs = [
-    useRef(null),
-    useRef(null),
-    // Add more refs if you have more sections
-  ];
+  // Criar refs separados para cada seção
+  const homeRef = useRef(null);
+  const secondRef = useRef(null);
+  const sobreRef = useRef(null);
+  const planosRef = useRef(null);
+
   const { setNavbarColor } = useNavbarColor();
 
-  // Ensure the page scrolls to the top on load
+  // Certifique-se de que a página role para o topo no carregamento
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [color, setColor] = useState('#f97316'); // State to control color
-
-  const handleMouseEnter = () => {
-    setColor('#ea580c'); // Change color on mouse enter
-  };
-
-  const handleMouseLeave = () => {
-    setColor('#f97316'); // Revert to original color on mouse leave
-  };
-
+  // Observador para detectar interseção das seções
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        // Variável para armazenar a seção com maior visibilidade
+        let maxRatio = 0;
+        let activeSection = '';
+
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            switch (entry.target.id) {
-              case 'section1':
-                setNavbarColor('bg-orange-700');
-                break;
-              case 'section2':
-                setNavbarColor('bg-violet-400');
-                break;
-              case 'section3':
-                setNavbarColor('bg-red-600');
-                break;
-              default:
-                setNavbarColor('bg-blue-600');
-            }
+          if (entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            activeSection = entry.target.id;
           }
         });
+
+        // Atualiza a cor da navbar com base na seção mais visível
+        switch (activeSection) {
+          case 'home':
+            setNavbarColor('bg-orange-700');
+            break;
+          case 'second':
+            setNavbarColor('bg-violet-400');
+            break;
+          case 'sobre':
+            setNavbarColor('bg-red-600');
+            break;
+          case 'planos':
+            setNavbarColor('bg-blue-600');
+            break;
+          default:
+            setNavbarColor('bg-gray-600');
+        }
       },
-      { threshold: 0.5 }
+      {
+        rootMargin: '0px',
+        threshold: Array.from(Array(101).keys(), (i) => i / 100), // Thresholds de 0 a 1 em incrementos de 0.01
+      }
     );
 
-    // Observe each section ref
-    sectionRefs.forEach((ref) => {
+    // Observar cada ref de seção separadamente
+    const refs = [homeRef, secondRef, sobreRef, planosRef];
+    refs.forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
 
@@ -70,108 +73,61 @@ export default function TransitionsPage() {
 
   return (
     <div className="bg-orange-600 font-sans overflow-hidden">
-       <PrivacyModal />
-      {/* Render the NavBar component */}
+      <PrivacyModal />
       <NavBar />
 
-      {/* First HOME section with fixed size */}
+      {/* HomeSection */}
       <motion.section
-        id="section1"
-        ref={sectionRefs[0]}
+        id="home"
+        ref={homeRef}
         className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black-600 via-orange-500 to-orange-600"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 2, ease: "easeInOut" }}
       >
         <HomeSection />
       </motion.section>
-      
-      <div>
+
+      {/* SecondSection */}
       <motion.section
-        id="section1"
-        ref={sectionRefs[0]}
-        className=" flex items-center justify-center  "
+        id="second"
+        ref={secondRef}
+        className="flex items-center justify-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 2, ease: "easeInOut" }}
         viewport={{ once: false, amount: 0.1 }}
       >
-       <SecondSection />
-       
+        <SecondSection />
       </motion.section>
-      </div>
 
-      <div>
+      {/* SobreNos */}
       <motion.section
-        id="section1"
-        ref={sectionRefs[0]}
-        className=" flex items-center justify-center  "
+        id="sobre"
+        ref={sobreRef}
+        className="flex items-center justify-center py-20"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 2, ease: "easeInOut" }}
         viewport={{ once: false, amount: 0.1 }}
       >
-       <SobreNos />
-       
+        <SobreNos />
       </motion.section>
-      </div>
 
-      <div className=" bg-gradient-to-b from-white via-gray-100 to-gray-200 ">
+      {/* PlanosSection */}
       <motion.section
-        id="section1"
-        ref={sectionRefs[0]}
-        className=" flex items-center justify-center"
-        
+        id="planos"
+        ref={planosRef}
+        className="flex items-center justify-center bg-gradient-to-b from-white via-gray-100 to-gray-200"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 2, ease: "easeInOut" }}
         viewport={{ once: false, amount: 0.1 }}
       >
-       <PlanosSection />
-       
-      </motion.section>
-      </div>
-      
-  
-
-
-    
-      {/* Additional space below HomeSection */}
-      <motion.div
-       id="section2"
-       ref={sectionRefs[1]}
-       style={{
-        backgroundImage: "url('/images/juuntos-violet.png')",
-        backgroundSize: "cover", // Ajusta a imagem para cobrir toda a área do container
-        backgroundPosition: "center", // Centraliza a imagem
-        backgroundRepeat: "no-repeat", // Evita repetição da imagem
-        height: "100vh", // Altura de 100% da altura da tela
-        width: "100%", // Largura de 100% da tela
-      }}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 50 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        viewport={{ once: false, amount: 0.5 }}
-        className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-700 via-gray-600 to-gray-700"
-      >
-       
-      </motion.div>
-
-      {/* Another section with animation */}
-      <motion.section
-       
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 50 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        viewport={{ once: false, amount: 0.5 }}
-        className="min-h-screen flex items-center justify-center bg-gray-100"
-      >
-        {/* Additional content */}
+        <PlanosSection />
       </motion.section>
     </div>
   );
