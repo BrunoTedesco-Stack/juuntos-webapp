@@ -8,6 +8,7 @@ import { useNavbarColor } from '@/app/context/NavbarContext';
 import PrivacyModal from './components/modalprivacidade';
 import FacilUsoSection from '@/app/components/facil-uso'
 import PlanosSection from '@/app/components/planos-section'
+import SobreNos from '@/app/components/sobre-nos-section'
 
 import Linhas from '/public/images/linhas.svg'; // Importa o SVG como um componente React
 
@@ -101,6 +102,22 @@ export default function TransitionsPage() {
       </motion.section>
       </div>
 
+      <div>
+      <motion.section
+        id="section1"
+        ref={sectionRefs[0]}
+        className=" flex items-center justify-center  "
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        viewport={{ once: false, amount: 0.1 }}
+      >
+       <SobreNos />
+       
+      </motion.section>
+      </div>
+
       <div className=" bg-gradient-to-b from-white via-gray-100 to-gray-200 ">
       <motion.section
         id="section1"
@@ -121,11 +138,7 @@ export default function TransitionsPage() {
   
 
 
-      <div className="relative w-full  overflow-hidden bg-gray-800">
-      
-
-      </div>
-
+    
       {/* Additional space below HomeSection */}
       <motion.div
        id="section2"
