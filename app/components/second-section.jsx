@@ -32,31 +32,92 @@ export default function SecondSection() {
         {/* Cabeçalho da Seção */}
         <div className="mb-12">
           <motion.h1
-            className="font-spacegrotesk text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6"
+            className="font-spacegrotesk text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 py-11"
             variants={textVariants}
           >
             <Typewriter
-              words={['BENEFÍCIOS DO CUIDADO COM A SAÚDE']}
-              loop={1}
+              words={['Inovação Digital na Saúde dos Colaboradores']}
+              loop={false}
               cursor
-              typeSpeed={70}
+              cursorStyle="|"
+              typeSpeed={80}
               deleteSpeed={50}
-              delaySpeed={1000}
+              delaySpeed={40000}
             />
           </motion.h1>
-          <motion.p
-            className="font-spacegrotesk text-lg sm:text-xl md:text-2xl text-center max-w-4xl mx-auto mb-6"
-            variants={textVariants}
+
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
+        
+        {/* Imagem à Esquerda */}
+        <motion.img
+          src="/images/relatorio.png"
+          alt="Exemplo do aplicativo"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeInOut' } }}
+          className="w-full md:w-[500px] h-auto object-contain "
+        />
+
+        {/* Texto à Direita */}
+        <motion.div
+          className="flex-1 text-white space-y-6"
+          initial="hidden"
+          animate="visible"
+          variants={textVariants}
+        >
+          <motion.div
+        className="lg:col-span-6 bg-orange-100 p-10 rounded-2xl shadow-xl hover:shadow-2xl "
+        variants={cardVariants}
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+          <h2 className="text-orange-500 font-spacegrotesk text-4xl md:text-5xl font-bold py-3">
+            Autocuidado apoiado por profissionais qualificados
+          </h2>
+         
+          <p className=" font-spacegrotesk text-lg md:text-xl text-orange-400 leading-relaxed py-6 px-3">
+          Com a missão de atender nossos clientes e beneficiários, 
+          a tecnologia da Juuntos aplica inteligência artificial 
+          para atuar na saúde da sua empresa. 
+          </p>
+          <p className=" font-spacegrotesk text-lg md:text-xl text-orange-400 leading-relaxed py-6 px-3">
+          
+          Além disso, fornecemos 
+          orientação consultiva a nossos clientes sobre estratégias de 
+          promoção da saúde e mitigação de riscos de doenças, o que poderá 
+          contribuir com a redução da sinistralidade do plano de saúde. 
+          Isso gera um impacto positivo nos resultados das empresas e melhora o bem-estar dos colaboradores.
+          </p>
+          <motion.div
+           className="box w-auto  font-spacegrotesk text-4xl font-bold text-center bg-orange-400 text-white px-6 py-3 rounded-full hover:bg-orange-500 pt-3"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            Uma abordagem digital e inovadora para o cuidado com a saúde dos colaboradores, promovendo bem-estar, qualidade de vida e redução de custos.
-          </motion.p>
-          <motion.p
-            className="font-spacegrotesk text-base sm:text-lg md:text-xl text-center max-w-4xl mx-auto"
-            variants={textVariants}
-          >
-            Oferecemos um conjunto de ferramentas para facilitar e simplificar o cuidado com a saúde do colaborador. Através de um processo digital de aquisição de medicamentos, proporcionamos uma experiência única e exclusiva. Utilizamos Inteligência Artificial para orientar de forma consultiva sobre prevenção de agravamento de doenças e ações de promoção à saúde, contribuindo para o bem-estar, melhoria da qualidade de vida e controle da sinistralidade do seu plano de saúde.
-          </motion.p>
+            vamos juuntos?
+          </motion.div>
+        </motion.div>
+        </motion.div>
+
+
+      </div>
         </div>
+        <motion.div
+            className="font-spacegrotesk text-3xl sm:text-4xl md:text-4xl font-bold text-center mb-6 py-11 pt-11"
+            variants={textVariants}
+          >
+            <Typewriter
+              words={['com a juuntos você tem acesso a uma plataforma digital que simplifica a aquisição de medicamentos']}
+              loop={false}
+              cursor
+              cursorStyle="|"
+              typeSpeed={80}
+              deleteSpeed={50}
+              delaySpeed={40000}
+            />
+          </motion.div>
+
 
         {/* Cards com Layout Responsivo */}
         <motion.div
@@ -128,7 +189,7 @@ export default function SecondSection() {
             variants={cardVariants}
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}   
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
