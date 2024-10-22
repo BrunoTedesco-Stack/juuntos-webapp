@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPaperPlane } from 'react-icons/fa';
 
 const ContatoSection = () => {
+  const [isMounted, setIsMounted] = useState(false); // Controle de montagem no lado do cliente
   const [formData, setFormData] = useState({
     nome: '',
     empresa: '',
@@ -12,7 +13,19 @@ const ContatoSection = () => {
     mensagem: '',
   });
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Estado para exibir o modal
+  const [modalMessage, setModalMessage] = useState(''); // Mensagem do modal
+  const [modalType, setModalType] = useState('success'); // Tipo do modal (success ou error)
+
+  // UseEffect para definir isMounted
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Verifica se está montado antes de renderizar o conteúdo
+  if (!isMounted) {
+    return <div className="w-full h-screen flex items-center justify-center text-white">Carregando...</div>;
+  }
 
   // Função para lidar com a mudança nos campos do formulário
   const handleInputChange = (e) => {
@@ -36,30 +49,52 @@ const ContatoSection = () => {
   };
 
   // Função para lidar com a submissão do formulário
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
       setFormErrors({});
-      setIsSubmitted(true);
 
-      // Simulação de envio de dados
-      console.log('Dados do formulário:', formData);
-      alert('Formulário enviado com sucesso!');
+      try {
+        const response = await fetch('http://localhost:5000/save-form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
 
-      // Limpar o formulário
-      setFormData({
-        nome: '',
-        empresa: '',
-        email: '',
-        telefone: '',
-        formaContato: '',
-        mensagem: '',
-      });
-      setIsSubmitted(false);
+        if (response.ok) {
+          setModalMessage('Formulário enviado com sucesso!');
+          setModalType('success');
+          setShowModal(true);
+          setFormData({
+            nome: '',
+            empresa: '',
+            email: '',
+            telefone: '',
+            formaContato: '',
+            mensagem: '',
+          });
+        } else {
+          setModalMessage('Erro ao salvar o formulário. Tente novamente.');
+          setModalType('error');
+          setShowModal(true);
+        }
+      } catch (error) {
+        console.error('Erro ao enviar o formulário:', error);
+        setModalMessage('Erro ao enviar o formulário. Verifique sua conexão.');
+        setModalType('error');
+        setShowModal(true);
+      }
     }
+  };
+
+  // Função para fechar o modal
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   // Variantes de animação para o formulário
@@ -114,7 +149,6 @@ const ContatoSection = () => {
               type="text"
               id="nome"
               name="nome"
-              required
               className={`w-full px-4 py-2 rounded-lg text-black bg-gray-200 focus:ring-2 focus:ring-orange-500 focus:outline-none ${
                 formErrors.nome ? 'border-2 border-red-500' : ''
               }`}
@@ -133,7 +167,6 @@ const ContatoSection = () => {
               type="text"
               id="empresa"
               name="empresa"
-              required
               className={`w-full px-4 py-2 rounded-lg text-black bg-gray-200 focus:ring-2 focus:ring-orange-500 focus:outline-none ${
                 formErrors.empresa ? 'border-2 border-red-500' : ''
               }`}
@@ -152,7 +185,6 @@ const ContatoSection = () => {
               type="email"
               id="email"
               name="email"
-              required
               className={`w-full px-4 py-2 rounded-lg text-black bg-gray-200 focus:ring-2 focus:ring-orange-500 focus:outline-none ${
                 formErrors.email ? 'border-2 border-red-500' : ''
               }`}
@@ -171,7 +203,6 @@ const ContatoSection = () => {
               type="tel"
               id="telefone"
               name="telefone"
-              required
               className={`w-full px-4 py-2 rounded-lg text-black bg-gray-200 focus:ring-2 focus:ring-orange-500 focus:outline-none ${
                 formErrors.telefone ? 'border-2 border-red-500' : ''
               }`}
@@ -193,7 +224,6 @@ const ContatoSection = () => {
                     type="radio"
                     name="formaContato"
                     value={option}
-                    required
                     className="form-radio text-orange-500"
                     checked={formData.formaContato === option}
                     onChange={handleInputChange}
@@ -207,6 +237,7 @@ const ContatoSection = () => {
             )}
           </div>
 
+          {/* Campo Mensagem (Opcional)
           {/* Campo Mensagem (Opcional) */}
           <div className="mb-6">
             <label className="block text-xl font-semibold mb-2" htmlFor="mensagem">
@@ -237,6 +268,35 @@ const ContatoSection = () => {
           </div>
         </motion.form>
       </div>
+
+      {/* Modal de Sucesso ou Erro */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <motion.div
+            className={`bg-black p-8 rounded-xl shadow-2xl text-center border-4 ${
+              modalType === 'success' ? 'border-green-500' : 'border-red-500'
+            }`}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2
+              className={`text-2xl font-bold mb-4 ${
+                modalType === 'success' ? 'text-green-500' : 'text-red-500'
+              }`}
+            >
+              {modalType === 'success' ? 'Sucesso!' : 'Erro!'}
+            </h2>
+            <p className="text-lg text-white mb-6">{modalMessage}</p>
+            <button
+              className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 transition-all duration-300"
+              onClick={handleCloseModal}
+            >
+              Fechar
+            </button>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
