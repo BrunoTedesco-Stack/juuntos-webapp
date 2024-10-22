@@ -28,21 +28,6 @@ const PlanosSection = () => {
 
   return (
     <section id="planos" className="py-20 bg-transparent relative overflow-hidden">
-      <div className="text-center mb-16">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="inline-flex items-center justify-center mb-4"
-            >
-              <FaStar className="text-white text-5xl mr-4" />
-              <h2 className="font-spacegrotesk text-5xl font-extrabold text-white mb-4 relative inline-block">
-                Conheça nossos planos
-                <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400 rounded-lg transform scale-x-0 origin-left transition-transform duration-500"></span>
-              </h2>
-            </motion.div>
-         
-          </div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 bg-violet-500 py-11 rounded-lg shadow-lg relative overflow-hidden">
         
         {/* Pseudo-elemento com a imagem de fundo rotacionada */}
@@ -57,7 +42,18 @@ const PlanosSection = () => {
         <div className="relative z-10">
           {/* Título da Seção com Ícone e Animação */}
           <div className="text-center mb-16">
-
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="inline-flex items-center justify-center mb-4"
+            >
+              <FaStar className="text-yellow-500 text-5xl mr-4" />
+              <h2 className="font-spacegrotesk text-5xl font-extrabold text-white mb-4 relative inline-block">
+                Conheça nossos planos
+                <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400 rounded-lg transform scale-x-0 origin-left transition-transform duration-500"></span>
+              </h2>
+            </motion.div>
             <p className="font-spacegrotesk text-2xl text-gray-700">
               Temos planos para todas as necessidades, escolha o seu!
             </p>
@@ -66,8 +62,8 @@ const PlanosSection = () => {
           {/* Cards dos Planos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Card: Juuntos 100 */}
-            <div className="relative group p-8 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
-              <div className="absolute inset-0 w-full h-full bg-indigo-600 opacity-10 blur-xl rounded-3xl transition-all duration-500 group-hover:opacity-30"></div>
+            <div className="relative group p-8 bg-gradient-to-br from-blue-400 to-teal-400 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
+              <div className="absolute inset-0 w-full h-full bg-blue-500 opacity-10 blur-xl rounded-3xl transition-all duration-500 group-hover:opacity-30"></div>
               <h3 className="font-spacegrotesk text-3xl font-bold text-white mb-4 group-hover:text-yellow-300 transition-colors">
                 Juuntos 100
               </h3>
@@ -80,15 +76,15 @@ const PlanosSection = () => {
             </div>
 
             {/* Card: Juuntos 200 */}
-            <div className="relative group p-8 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
-              <div className="absolute inset-0 w-full h-full bg-indigo-600 opacity-10 blur-xl rounded-3xl transition-all duration-500 group-hover:opacity-30"></div>
+            <div className="relative group p-8 bg-gradient-to-br from-teal-400 to-cyan-400 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
+              <div className="absolute inset-0 w-full h-full bg-teal-500 opacity-10 blur-xl rounded-3xl transition-all duration-500 group-hover:opacity-30"></div>
               <h3 className="font-spacegrotesk text-3xl font-bold text-white mb-4 group-hover:text-yellow-300 transition-colors">
                 Juuntos 200
               </h3>
               <p className="font-spacegrotesk text-lg text-white mb-8">
                 Medicamentos prescritos, genéricos e tarjados com R$200,00 mensal de cobertura para cada colaborador.
               </p>
-              <button className="font-spacegrotesk py-3 px-6 bg-white text-blue-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white">
+              <button className="font-spacegrotesk py-3 px-6 bg-white text-teal-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-teal-600 hover:text-white">
                 Saiba mais
               </button>
             </div>
@@ -102,7 +98,7 @@ const PlanosSection = () => {
               <p className="font-spacegrotesk text-lg text-white mb-8">
                 Medicamentos prescritos, de marca ou genéricos e tarjados com R$200,00 mensal de cobertura para cada colaborador.
               </p>
-              <button className="font-spacegrotesk py-3 px-6 bg-white text-blue-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white">
+              <button className="font-spacegrotesk py-3 px-6 bg-white text-indigo-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-indigo-600 hover:text-white">
                 Saiba mais
               </button>
             </div>
@@ -128,7 +124,7 @@ const PlanosSection = () => {
                   ease: 'easeOut',
                 }}
               >
-                <FaCheck className="text-violet-500 mb-4 text-4xl" />
+                <FaCheck className="text-green-500 mb-4 text-4xl" />
                 <p className="font-spacegrotesk text-xl text-gray-600 font-semibold text-center">{text}</p>
               </motion.div>
             ))}
