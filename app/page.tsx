@@ -41,7 +41,7 @@ export default function TransitionsPage() {
         className="min-h-screen flex items-center justify-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        onViewportEnter={() => setNavbarColor('bg-violet-400')}
+        onViewportEnter={() => setNavbarColor('bg-orange-700')}
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <SecondSection />
@@ -53,7 +53,7 @@ export default function TransitionsPage() {
         className="min-h-screen flex items-center justify-center py-20"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        onViewportEnter={() => setNavbarColor('bg-red-600')}
+        onViewportEnter={() => setNavbarColor('bg-orange-700')}
         transition={{ duration: 1, ease: "easeInOut" }}
       >
         <SobreNos />
