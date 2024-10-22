@@ -10,6 +10,8 @@ import PrivacyModal from './components/modalprivacidade';
 import PlanosSection from '@/app/components/planos-section';
 import SobreNos from '@/app/components/sobre-nos-section';
 import HowItWorksSection from '@/app/components/facilidade-section';
+import BeneficiosSection from '@/app/components/beneficios-section';
+import ContatoSection from '@/app/components/contato-section';
 
 export default function TransitionsPage() {
   const { setNavbarColor } = useNavbarColor();
@@ -63,10 +65,7 @@ export default function TransitionsPage() {
       <motion.section
         id="planos"
         className="min-h-screen flex items-center justify-center bg-gradient-to-b from-violet-500 via-violet-400 to-violet-500"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        onViewportEnter={() => setNavbarColor('bg-violet-600')}
-        transition={{ duration: 1, ease: "easeInOut" }}
+
       >
         <PlanosSection />
       </motion.section>
@@ -82,6 +81,29 @@ export default function TransitionsPage() {
        
       >
         <HowItWorksSection />
+      </motion.section>
+
+
+      <motion.section
+        id="beneficios"
+        className=" flex items-center justify-center bg-gradient-to-b from-violet-500 via-violet-400 to-violet-500"
+        
+       
+       
+       
+      >
+        <BeneficiosSection />
+      </motion.section>
+
+      <motion.section
+        id="contato"
+        className=" flex items-center justify-center bg-gradient-to-b from-violet-500 via-violet-400 to-violet-500"
+        
+       
+       
+       
+      >
+        <ContatoSection />
       </motion.section>
     </div>
   );
