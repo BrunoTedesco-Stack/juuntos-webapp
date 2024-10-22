@@ -137,10 +137,10 @@ export default function SecondSection() {
             <h3 className="font-spacegrotesk text-2xl font-bold text-orange-600 mb-4">
             <LottieIcon animationName="rocket" /> Inovação Digital
             </h3>
-            <p className="font-spacegrotesk text-gray-100 mb-6">
+            <p className="font-spacegrotesk text-orange-200 mb-6">
               Nossa plataforma digital simplifica a aquisição de medicamentos. Acesse farmácias em todo o Brasil e realize compras de forma rápida e segura.
             </p>
-            <ul className="font-spacegrotesk list-disc ml-5 space-y-2 text-gray-600">
+            <ul className="font-spacegrotesk  list-disc ml-5 space-y-2 text-orange-200">
               <li>Aquisição rápida e segura pelo app</li>
               <li>Uso do saldo via PIX em qualquer farmácia</li>
               <li>Experiência personalizada para o usuário</li>
@@ -160,7 +160,7 @@ export default function SecondSection() {
             <h3 className="font-spacegrotesk text-2xl font-bold text-orange-600 mb-4">
             <LottieIcon animationName="aiicon" /> IA Consultiva
             </h3>
-            <p className="font-spacegrotesk text-gray-600">
+            <p className="font-spacegrotesk text-orange-200">
               Inteligência Artificial para orientação personalizada, promovendo saúde preventiva e bem-estar otimizado.
             </p>
           </motion.div>
@@ -178,7 +178,7 @@ export default function SecondSection() {
             <h3 className="font-spacegrotesk text-2xl font-bold  text-orange-600 mb-4">
             <LottieIcon animationName="redux" /> Redução de Custos
             </h3>
-            <p className="font-spacegrotesk text-gray-600">
+            <p className="font-spacegrotesk text-orange-200">
               Controle de sinistralidade e custos de saúde mais eficientes, com soluções de gestão de saúde.
             </p>
           </motion.div>
