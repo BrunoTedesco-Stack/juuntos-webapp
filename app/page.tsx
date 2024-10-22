@@ -9,7 +9,7 @@ import { useNavbarColor } from '@/app/context/NavbarContext';
 import PrivacyModal from './components/modalprivacidade';
 import PlanosSection from '@/app/components/planos-section';
 import SobreNos from '@/app/components/sobre-nos-section';
-import FacilidadeSection from '@/app/components/facilidade-section';
+import HowItWorksSection from '@/app/components/facilidade-section';
 
 export default function TransitionsPage() {
   const { setNavbarColor } = useNavbarColor();
@@ -74,14 +74,14 @@ export default function TransitionsPage() {
 
       {/* Facilidade Section */}
           <motion.section
-        id="planos"
+        id="comousar"
         className=" flex items-center justify-center bg-gradient-to-b from-violet-500 via-violet-400 to-violet-500"
         
        
        
        
       >
-        <FacilidadeSection />
+        <HowItWorksSection />
       </motion.section>
     </div>
   );
