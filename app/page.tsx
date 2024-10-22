@@ -12,6 +12,7 @@ import SobreNos from '@/app/components/sobre-nos-section';
 import HowItWorksSection from '@/app/components/facilidade-section';
 import BeneficiosSection from '@/app/components/beneficios-section';
 import ContatoSection from '@/app/components/contato-section';
+import Footer from '@/app/components/rodape-section';
 
 export default function TransitionsPage() {
   const { setNavbarColor } = useNavbarColor();
@@ -104,6 +105,17 @@ export default function TransitionsPage() {
        
       >
         <ContatoSection />
+      </motion.section>
+
+      <motion.section
+        id="contato"
+        className=" flex items-center justify-center bg-gradient-to-b from-violet-500 via-violet-400 to-violet-500"
+        
+       
+       
+       
+      >
+        <Footer/>
       </motion.section>
     </div>
   );
