@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link as ScrollLink } from 'react-scroll';
 import { Typewriter } from 'react-simple-typewriter';
 import LottieIcon from '@/app/components/LottieIcon';
 export default function SecondSection() {
@@ -90,13 +91,21 @@ export default function SecondSection() {
           contribuir com a redução da sinistralidade do plano de saúde. 
           Isso gera um impacto positivo nos resultados das empresas e melhora o bem-estar dos colaboradores.
           </p>
+          <ScrollLink 
+        to="contato" 
+        smooth={true} 
+        duration={1000} 
+        offset={0} 
+        className="cursor-pointer"
+      >
           <motion.div
-           className="box w-auto  font-spacegrotesk text-4xl font-bold text-center bg-orange-400 text-white px-6 py-3 rounded-full hover:bg-orange-500 pt-3"
+           className="box w-auto  font-spacegrotesk text-4xl font-bold text-center bg-orange-500 text-white px-6 py-3 rounded-full hover:bg-orange-600 pt-3"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             vamos juuntos?
           </motion.div>
+          </ScrollLink>
         </motion.div>
         </motion.div>
 

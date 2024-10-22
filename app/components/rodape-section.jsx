@@ -1,4 +1,6 @@
 import { FaApple, FaGooglePlay } from 'react-icons/fa';
+import { Link as ScrollLink } from 'react-scroll';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -15,21 +17,51 @@ const Footer = () => {
 
             {/* Navegação */}
             <div className="flex flex-wrap justify-center lg:justify-start space-x-4 text-white text-lg">
-              <a href="#home" className="hover:text-orange-500 transition-colors">
+              <ScrollLink 
+                to="home" 
+                smooth={true} 
+                duration={1000} 
+                offset={0} 
+                className="cursor-pointer hover:text-orange-500 transition-colors"
+              >
                 Home
-              </a>
-              <a href="#sobre-nos" className="hover:text-orange-500 transition-colors">
+              </ScrollLink>
+              <ScrollLink 
+                to="sobre" 
+                smooth={true} 
+                duration={1000}
+                offset={-70}  
+                className="cursor-pointer hover:text-orange-500 transition-colors"
+              >
                 Sobre Nós
-              </a>
-              <a href="#planos" className="hover:text-orange-500 transition-colors">
+              </ScrollLink>
+              <ScrollLink 
+                to="planos" 
+                smooth={true} 
+                duration={1000} 
+                offset={0} 
+                className="cursor-pointer hover:text-orange-500 transition-colors"
+              >
                 Nossos Planos
-              </a>
-              <a href="#contato" className="hover:text-orange-500 transition-colors">
+              </ScrollLink>
+              <ScrollLink 
+                to="contato" 
+                smooth={true} 
+                duration={1000} 
+                offset={0} 
+                className="cursor-pointer hover:text-orange-500 transition-colors"
+              >
                 Fale Conosco
-              </a>
-              <a href="#entrar" className="hover:text-orange-500 transition-colors">
+              </ScrollLink>
+              <ScrollLink 
+                to="entrar" 
+                smooth={true} 
+                duration={1000} 
+                offset={0} 
+                className="cursor-pointer hover:text-orange-500 transition-colors"
+              >
                 Entrar
-              </a>
+              </ScrollLink>
             </div>
           </div>
 
@@ -64,12 +96,24 @@ const Footer = () => {
           <div className="text-sm text-gray-500">
             <p className="mb-2">
               Direitos Autorais © Juuntos - 
-              <a href="#termos" className="hover:text-orange-500 ml-1">Termos de Uso</a> - 
-              <a href="#privacidade" className="hover:text-orange-500 ml-1">Política de Privacidade</a>
+              <Link href="/politicas" legacyBehavior>
+               
+               <a className="text-orange-500 font-semibold cursor-pointer hover:underline">
+               
+                Termos de Uso
+                </a>
+              </Link> - 
+              <Link href="/politicas" legacyBehavior>
+               
+               <a className="text-orange-500 font-semibold cursor-pointer hover:underline">
+               
+                Política de Privacidade
+                </a>
+                </Link>{' '}
             </p>
             <p className="mb-2">JUUNTOS ASSISTÊNCIA FARMACÊUTICA LTDA</p>
-            <p>CNPJ: 00.000.000/0001-00</p>
-            <p>Rua XPTO, 100, Rio de Janeiro, RJ</p>
+            <p>CNPJ: 91.942.306/0001-12</p>
+            <p>Rua XV de novembro, 100, Rio de Janeiro, RJ</p>
           </div>
         </div>
       </div>

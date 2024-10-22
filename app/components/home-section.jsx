@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { useState, useEffect } from 'react';
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function HomeSection() {
   // Estados para controlar a sequência de exibição
@@ -155,16 +156,24 @@ export default function HomeSection() {
                  
 
                 </motion.div>
-                <div className="flex  h-auto justify-center md:justify-start mt-9">
-                  <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className="box w-auto  font-spacegrotesk text-4xl font-bold text-center bg-orange-400 text-white px-6 py-3 rounded-full hover:bg-orange-500 "
-                  >
-                    comece a usar agora!
-                  </motion.div>
-                </div>
+                <div className="flex h-auto justify-center md:justify-start mt-9">
+      <ScrollLink 
+        to="contato" 
+        smooth={true} 
+        duration={500} 
+        offset={-70} 
+        className="cursor-pointer"
+      >
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="box w-auto font-spacegrotesk text-4xl font-bold text-center bg-orange-400 text-white px-6 py-3 rounded-full hover:bg-orange-500"
+        >
+          comece a usar agora!
+        </motion.div>
+      </ScrollLink>
+    </div>
               </motion.div>
             )}
           </motion.div>

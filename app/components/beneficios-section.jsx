@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import { Link as ScrollLink } from 'react-scroll';
 import {
   FaCheck,
   FaHeart,
@@ -158,9 +159,17 @@ const BeneficiosSection = () => {
             <p className="font-spacegrotesk text-xl text-white mb-8">
               CONHEÇA TODOS OS DETALHES, FALE COM O SEU REPRESENTANTE COMERCIAL!
             </p>
+            <ScrollLink 
+        to="contato" 
+        smooth={true} 
+        duration={1000} 
+        offset={0} 
+        className="cursor-pointer"
+      >
             <button className="font-spacegrotesk py-3 px-6 bg-orange-300 text-violet-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white">
               Indique a Juuntos para a sua empresa
             </button>
+            </ScrollLink>
           </div>
         </div>
       </div>

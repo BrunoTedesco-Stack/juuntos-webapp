@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import { FaCheck, FaStar } from 'react-icons/fa';
+import { Link as ScrollLink } from 'react-scroll';
 
 const PlanosSection = () => {
   // Usando o Intersection Observer para animação ao entrar e sair da view
@@ -66,6 +67,13 @@ const PlanosSection = () => {
           {/* Cards dos Planos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Card: Juuntos 100 */}
+            <ScrollLink 
+        to="contato" 
+        smooth={true} 
+        duration={1000} 
+        offset={0} 
+        className="cursor-pointer"
+      >
             <div className="relative group p-8 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
               <div className="absolute inset-0 w-full h-full bg-indigo-600 opacity-10 blur-xl rounded-3xl transition-all duration-500 group-hover:opacity-30"></div>
               <h3 className="font-spacegrotesk text-3xl font-bold text-white mb-4 group-hover:text-yellow-300 transition-colors">
@@ -74,12 +82,22 @@ const PlanosSection = () => {
               <p className="font-spacegrotesk text-lg text-white mb-8">
                 Medicamentos prescritos, genéricos e tarjados com R$100,00 mensal de cobertura para cada colaborador.
               </p>
+              
               <button className="font-spacegrotesk py-3 px-6 bg-white text-blue-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white">
                 Saiba mais
               </button>
+             
             </div>
+            </ScrollLink>
 
             {/* Card: Juuntos 200 */}
+            <ScrollLink 
+        to="contato" 
+        smooth={true} 
+        duration={1000} 
+        offset={0} 
+        className="cursor-pointer"
+      >
             <div className="relative group p-8 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
               <div className="absolute inset-0 w-full h-full bg-indigo-600 opacity-10 blur-xl rounded-3xl transition-all duration-500 group-hover:opacity-30"></div>
               <h3 className="font-spacegrotesk text-3xl font-bold text-white mb-4 group-hover:text-yellow-300 transition-colors">
@@ -88,12 +106,22 @@ const PlanosSection = () => {
               <p className="font-spacegrotesk text-lg text-white mb-8">
                 Medicamentos prescritos, genéricos e tarjados com R$200,00 mensal de cobertura para cada colaborador.
               </p>
+             
               <button className="font-spacegrotesk py-3 px-6 bg-white text-blue-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white">
                 Saiba mais
               </button>
+             
             </div>
+            </ScrollLink>
 
             {/* Card: Juuntos 200+ */}
+            <ScrollLink 
+        to="contato" 
+        smooth={true} 
+        duration={1000} 
+        offset={0} 
+        className="cursor-pointer"
+      >
             <div className="relative group p-8 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
               <div className="absolute inset-0 w-full h-full bg-indigo-600 opacity-10 blur-xl rounded-3xl transition-all duration-500 group-hover:opacity-30"></div>
               <h3 className="font-spacegrotesk text-3xl font-bold text-white mb-4 group-hover:text-yellow-300 transition-colors">
@@ -102,10 +130,13 @@ const PlanosSection = () => {
               <p className="font-spacegrotesk text-lg text-white mb-8">
                 Medicamentos prescritos, de marca ou genéricos e tarjados com R$200,00 mensal de cobertura para cada colaborador.
               </p>
+              
               <button className="font-spacegrotesk py-3 px-6 bg-white text-blue-500 font-semibold rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-600 hover:text-white">
                 Saiba mais
               </button>
+              
             </div>
+            </ScrollLink>
           </div>
 
           {/* Benefícios dos Planos com Destaque */}
