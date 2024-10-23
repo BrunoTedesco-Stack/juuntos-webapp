@@ -4,7 +4,7 @@ export async function POST(req) {
       const formData = await req.json();
   
       // Enviar os dados para o backend
-      const response = await fetch('http://localhost:5000/save-form', {
+      const response = await fetch('http://20.121.57.135/:5000/save-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
